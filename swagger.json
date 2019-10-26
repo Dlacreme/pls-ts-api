@@ -1,0 +1,30 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "0.0.1",
+    "title": "PLS API",
+    "description": "Allow interaction with PLS system",
+    "contact": {
+      "name": "PLS API",
+      "email": "dlacreme@gmail.com",
+      "url": "https://coming-soon.com"
+    }
+  },
+  "host": "pls-api",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+
+  },
+  "definitions": {
+
+  }
+}
