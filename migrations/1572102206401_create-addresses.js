@@ -6,27 +6,18 @@ exports.up = (pgm) => {
 
     pgm.createTable('languages', {
         id: { primaryKey: true, type: 'varchar(3)', notNull: true, unique: true },
+        label: { type: 'varchar(55)', notNull: true },
     });
 
     pgm.createTable('countries', {
         id: { primaryKey: true, type: 'varchar(3)', notNull: true, unique: true },
-        language_id: { type: 'varchar(3)', notNull: true, default: 'en', references: '"languages"' }
-    });
-
-    pgm.createTable('i18n_countries', {
-        id: { type: 'varchar(3)', notNull: true, unique: true, references: '"countries"' },
         language_id: { type: 'varchar(3)', notNull: true, default: 'en', references: '"languages"' },
         label: { type: 'varchar(500)', notNull: true }
-    })
+    });
 
     pgm.createTable('cities', {
         id: { primaryKey: true, type: 'uuid', notNull: true, unique: true, default: pgm.func('uuid_generate_v4()') },
-        country_id: { type: 'varchar(3)', notNull: true, references: '"countries"' }
-    });
-
-    pgm.createTable('i18n_cities', {
-        id: { type: 'uuid', notNull: true, unique: true, references: '"cities"' },
-        language_id: { type: 'varchar(3)', notNull: true, default: 'en', references: '"languages"' },
+        country_id: { type: 'varchar(3)', notNull: true, references: '"countries"' },
         label: { type: 'varchar(500)', notNull: true }
     });
 
@@ -48,8 +39,6 @@ exports.up = (pgm) => {
 exports.down = (pgm) => {
     pgm.dropTable('languages');
     pgm.dropTable('countries');
-    pgm.dropTable('i18n_countries');
     pgm.dropTable('cities');
-    pgm.dropTable('i18n_cities');
     pgm.dropTable('addresses');
 };
