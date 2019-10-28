@@ -28,4 +28,4 @@ with open(cities_list_path, 'r') as cities:
     for i, city in enumerate(cities):
         if i == 0:
             continue
-        handle_city(city.replace('"', ''))
+        handle_city(city.replace('"', '').replace("'", ""))
