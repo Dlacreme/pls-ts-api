@@ -6,10 +6,10 @@ country_inserted = []
 
 def insert_country(code, label):
     country_inserted.append(code)
-    print('INSERT [{0}]{1}', code, label)
+    print(f"INSERT INTO countries (id, language_id, label) VALUES('{code}', 'en', '{label}');")
 
 def insert_city(country_code, label):
-    print('INSERT {0}-{1}', country_code, label)
+    print(f"INSERT INTO cities (country_id, label) VALUES('{country_code}', '{label}');")
 
 def handle_city(city):
     details = city.strip().split(',')
