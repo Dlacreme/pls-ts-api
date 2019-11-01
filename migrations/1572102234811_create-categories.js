@@ -14,7 +14,7 @@ exports.up = (pgm) => {
     });
 
     pgm.createTable('i18n_categories', {
-        id: { type: 'varchar(255)', notNull: true, unique: true, references: '"categories"' },
+        id: { type: 'varchar(255)', notNull: true, references: '"categories"' },
         language_id: { type: 'varchar(3)', notNull: true, default: 'en', references: '"languages"' },
         label: { type: 'varchar(500)', notNull: true }
     });

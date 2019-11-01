@@ -12,13 +12,13 @@ exports.up = (pgm) => {
     pgm.createTable('countries', {
         id: { primaryKey: true, type: 'varchar(3)', notNull: true, unique: true },
         language_id: { type: 'varchar(3)', notNull: true, default: 'en', references: '"languages"' },
-        label: { type: 'varchar(500)', notNull: true }
+        label: { type: 'varchar(255)', notNull: true }
     });
 
     pgm.createTable('cities', {
         id: { primaryKey: true, type: 'uuid', notNull: true, unique: true, default: pgm.func('uuid_generate_v4()') },
         country_id: { type: 'varchar(3)', notNull: true, references: '"countries"' },
-        label: { type: 'varchar(500)', notNull: true }
+        label: { type: 'varchar(255)', notNull: true }
     });
 
     pgm.createTable('addresses', {
