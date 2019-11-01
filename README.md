@@ -9,6 +9,10 @@ postgres# ALTER USER pls CREATEDB;
 postgres# ALTER USER pls SUPERUSER;
 postgres# CREATE EXTENSION "uuid-ossp";
 postgres# CREATE DATABASE pls_development;
+
+psql pls_development < db/seeds_location.pgsql
+psql pls_development < db/seeds_category.pgsql
+psql pls_development < db/seeds_const.pgsql
 ```
 
 ## Environment variables

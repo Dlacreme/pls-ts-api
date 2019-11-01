@@ -230,7 +230,7 @@ VALUES('gymnastics', 'https://github.com/dlacreme/pls-assets/gymnastics', NULL);
 
 -- air_sports
 INSERT INTO i18n_categories VALUES(id, language_id, label) VALUES('air_sports', 'en', 'Air Sports');
-INSERT INTO i18n_categories VALUES(id, language_id, label) VALUES('air_sports', 'fr', 'Sport d\'air');
+INSERT INTO i18n_categories VALUES(id, language_id, label) VALUES('air_sports', 'fr', 'Sport d air');
 INSERT INTO i18n_categories VALUES(id, language_id, label) VALUES('air_sports', 'vi', 'Air Sports');
 
 -- air_sports
@@ -240,7 +240,7 @@ INSERT INTO i18n_categories VALUES(id, language_id, label) VALUES('parachuting',
 
 -- air_sports
 INSERT INTO i18n_categories VALUES(id, language_id, label) VALUES('winter_sports', 'en', 'Winter Sports');
-INSERT INTO i18n_categories VALUES(id, language_id, label) VALUES('winter_sports', 'fr', 'Sport d\'hiver');
+INSERT INTO i18n_categories VALUES(id, language_id, label) VALUES('winter_sports', 'fr', 'Sport hiver');
 INSERT INTO i18n_categories VALUES(id, language_id, label) VALUES('winter_sports', 'vi', 'Winter Sports');
 
 -- air_sports
@@ -270,7 +270,7 @@ INSERT INTO i18n_categories VALUES(id, language_id, label) VALUES('ice_skating',
 
 -- air_sports
 INSERT INTO i18n_categories VALUES(id, language_id, label) VALUES('aquatic_sports', 'en', 'Aquatic Sports');
-INSERT INTO i18n_categories VALUES(id, language_id, label) VALUES('aquatic_sports', 'fr', 'Sport d\'eau');
+INSERT INTO i18n_categories VALUES(id, language_id, label) VALUES('aquatic_sports', 'fr', 'Sport d eau');
 INSERT INTO i18n_categories VALUES(id, language_id, label) VALUES('aquatic_sports', 'vi', 'Aquatic Sports');
 
 -- air_sports
@@ -415,7 +415,7 @@ INSERT INTO i18n_categories VALUES(id, language_id, label) VALUES('dance', 'vi',
 
 -- air_sports
 INSERT INTO i18n_categories VALUES(id, language_id, label) VALUES('ball_sports', 'en', 'Ball Sports');
-INSERT INTO i18n_categories VALUES(id, language_id, label) VALUES('ball_sports', 'fr', 'Sports d\'équipe');
+INSERT INTO i18n_categories VALUES(id, language_id, label) VALUES('ball_sports', 'fr', 'Sports équipe');
 INSERT INTO i18n_categories VALUES(id, language_id, label) VALUES('ball_sports', 'vi', 'Ball sport');
 
 -- air_sports
@@ -515,7 +515,7 @@ INSERT INTO i18n_categories VALUES(id, language_id, label) VALUES('bowling', 'vi
 
 -- air_sports
 INSERT INTO i18n_categories VALUES(id, language_id, label) VALUES('outdoor', 'en', 'Outdoor Sports');
-INSERT INTO i18n_categories VALUES(id, language_id, label) VALUES('outdoor', 'fr', 'Sport d\'exterieur');
+INSERT INTO i18n_categories VALUES(id, language_id, label) VALUES('outdoor', 'fr', 'Sport d exterieur');
 INSERT INTO i18n_categories VALUES(id, language_id, label) VALUES('outdoor', 'vi', 'Outdoor Sports');
 
 -- air_sports

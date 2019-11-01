@@ -11,7 +11,7 @@
     "lint": "./node_modules/tslint/bin/tslint -c tslint.json 'src/**/*.ts'",
     "build": "./node_modules/.bin/tsc",
     "listen": "./node_modules/.bin/ts-node src/server.ts",
-    "migrate": "./node_mobules/.bin/node-pg-migrate --config-file ./db/config.json"
+    "migrate": "./node_modules/.bin/node-pg-migrate --config-file ./db/config.json"
   },
   "engines": {
     "node": "11.10.1"
