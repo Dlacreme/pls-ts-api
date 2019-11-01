@@ -5,19 +5,23 @@ import * as expressWinston from 'express-winston';
 import { inject } from 'aurelia-dependency-injection';
 import { Config } from './config';
 import { Logger } from './middlewares/logger';
+import { Router } from './router';
 
 @inject(
-  Logger
+  Logger,
+  Router,
 )
 class App {
   public app: express.Application;
 
   constructor(
-    private logger: Logger
+    private logger: Logger,
+    private router: Router
   ) {
     this.logger.log('info', `PLS API booting in ${Config.ENVIRONMENT} mode`);
     this.app = express();
     this.config();
+    this.router.loadRoutes(this.app);
   }
 
   public run(): void {
