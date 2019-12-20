@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- SQL XML created by WWW SQL Designer, https://github.com/ondras/wwwsqldesigner/ -->
+<!-- Active URL: https://ondras.zarovi.cz/sql/demo/?keyword=default -->
+<sql>
+<datatypes db="postgresql">
+	<group color="rgb(238,238,170)" label="Integer">
+		<type label="TinyInt" quote="" sql="tinyint" length="0" re="INT" note="Integer data: 0 to 255" bytes="1"/>
+		<type label="SmallInt" quote="" sql="smallint" length="0" re="INT" note="Integer data: -32,768 to 32,767" bytes="2"/>
+		<type label="Int" quote="" sql="int" length="0" re="INT" note="Integer data: -2,147,483,648 to 2,147,483,647" bytes="4"/>
+		<type label="BigInt" quote="" sql="bigint" length="0" re="INT" note="Integer data: -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807" bytes="8"/>
+	</group>
+
+	<group color="rgb(238,238,170)" label="Monetary">
+		<type label="Money" quote="" sql="money" length="0" re="FLOAT" note="Integer data: -922,337,203,685,477.5808 to 922,337,203,685,477.5807" bytes="8"/>
+		<type label="SmallMoney" quote="" sql="smallmoney" length="0" re="FLOAT" note="-214,748.3648 to 214,748.3647" bytes="4"/>
+	</group>
+
+	<group color="rgb(238,238,170)" label="Numeric">
+		<type label="Real" quote="" sql="real" length="0" re="FLOAT" note="Floating precision number data: -3.402823E+38 to 3.402823E+38" bytes="4"/>
+		<type label="Float" quote="" sql="float" length="0" re="FLOAT" note="Floating precision number data: -4.94E+324 to 4.94E+324" bytes="8"/>
+		<type label="Decimal" quote="" sql="decimal" length="1" re="DEC" note="Fixed precision and scale numeric data: -10^38 +1 to 10^38 -1 (decimal and numeric are synonyms)" bytes="n*"/>
+		<type label="Numeric" quote="" sql="numeric" length="1" re="DEC" note="Fixed precision and scale numeric data: -10^38 +1 to 10^38 -1 (decimal and numeric are synonyms)" bytes="n*"/>
+	</group>
+
+	<group color="rgb(255,200,200)" label="Character">
+		<type label="Char" quote="'" sql="char" length="0" note="Fixed-length character data with a maximum length of 8,000 characters" bytes="n"/>
+		<type label="Varchar" quote="'" sql="varchar" length="1" note="Variable-length data with a maximum of 8,000 characters" bytes="m &lt;= n"/>
+		<type label="Text" quote="'" sql="text" length="1" note="Variable-length data with a maximum length of 2,147,483,647 characters" bytes="&lt;= 2,147,483,647"/>
+		<type label="XML" quote="'" sql="xml" length="0" note="XML" bytes="n"/>
+	</group>
+
+	<group color="rgb(255,200,200)" label="Unicode Character">
+		<type label="nChar" quote="'s" sql="nchar" length="0" note="Fixed-length Unicode data with a maximum length of 4,000 characters" bytes="n"/>
+		<type label="nVarchar" quote="'" sql="nvarchar" length="1" note="Variable-length Unicode data with a maximum length of 4,000 characters" bytes="m &lt;= n"/>
+		<type label="nText" quote="'" sql="ntext" length="1" note="Variable-length Unicode data with a maximum length of 1,073,741,823 characters" bytes="&lt;= 2,147,483,647"/>
+	</group>
+
+
+	<group color="rgb(200,255,200)" label="Date &amp; Time">
+		<type label="Datetime" quote="" sql="datetime" length="0" note="Jan 1, 1753 to Dec 31, 9999" bytes="8"/>
+		<type label="SmallDateTime" quote="" sql="smalldatetime" length="0" note="Jan 1, 1900 to Dec 31, 2079" bytes="4"/>
+	</group>
+
+	<group color="rgb(200,200,255)" label="Binary">
+		<type label="Binary" quote="'" sql="binary" length="0" note="Fixed-length binary data with a maximum length of 8,000 bytes" bytes="n"/>
+		<type label="Varbinary" quote="'" sql="varbinary" length="1" note="Variable-length binary data with a maximum length of 8,000 bytes" bytes="m &lt;= n"/>
+	</group>
+
+	<group color="rgb(200,220,255)" label="Miscellaneous">
+		<type label="Bit" quote="" sql="bit" length="0" note="Boolean: 1 or 0" bytes="1"/>
+		<type label="Image" quote="" sql="image" length="1" re="BLOB" note="Variable-length binary data with a maximum length of 2,147,483,647 bytes" bytes="0 to 2,147,483,647"/>
+		<type label="Timestamp" quote="" sql="timestamp" length="0" note="Locally unique binary number updated as a row gets updated" bytes="8"/>
+		<type label="SQL Variant" quote="" sql="sql_variant" length="1" note="Stores any datatype except text, ntext, image, timestamp" bytes=""/>
+		<type label="Uniqueidentifier" quote="" sql="uniqueidentifier" length="1" note="GUID" bytes="16"/>
+	</group>
+</datatypes><table x="201" y="102" name="user">
+<row name="id" null="0" autoincrement="1">
+<datatype>bigint</datatype>
+</row>
+<row name="role_id" null="0" autoincrement="0">
+<datatype>smallint</datatype>
+<default>5</default><relation table="role" row="id" />
+</row>
+<row name="email" null="0" autoincrement="0">
+<datatype>varchar(250)</datatype>
+</row>
+<row name="password" null="1" autoincrement="0">
+<datatype>varchar(255)</datatype>
+<default>NULL</default></row>
+<row name="provider_id" null="1" autoincrement="0">
+<datatype>varchar(255)</datatype>
+<default>NULL</default></row>
+<row name="provider_type" null="1" autoincrement="0">
+<datatype>varchar(55)</datatype>
+<default>NULL</default></row>
+<row name="created_at" null="0" autoincrement="0">
+<datatype>datetime</datatype>
+</row>
+<row name="profile_id" null="1" autoincrement="0">
+<datatype>bigint</datatype>
+<default>NULL</default><relation table="profile" row="id" />
+</row>
+<row name="active_company_id" null="1" autoincrement="0">
+<datatype>int</datatype>
+<default>NULL</default><relation table="company" row="id" />
+</row>
+<row name="notif_counter" null="0" autoincrement="0">
+<datatype>smallint</datatype>
+<default>0</default></row>
+<row name="chat_counter" null="0" autoincrement="0">
+<datatype>smallint</datatype>
+<default>0</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="384" y="26" name="role">
+<row name="id" null="0" autoincrement="1">
+<datatype>tinyint</datatype>
+</row>
+<row name="label" null="0" autoincrement="0">
+<datatype>varchar(255)</datatype>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="542" y="133" name="company">
+<row name="id" null="0" autoincrement="1">
+<datatype>int</datatype>
+</row>
+<row name="label" null="0" autoincrement="0">
+<datatype>varchar(255)</datatype>
+</row>
+<row name="created_by_id" null="0" autoincrement="0">
+<datatype>bigint</datatype>
+<relation table="user" row="id" />
+</row>
+<row name="created_at" null="0" autoincrement="0">
+<datatype>datetime</datatype>
+</row>
+<row name="is_disabled" null="0" autoincrement="0">
+<datatype>tinyint</datatype>
+<default>'f'</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="821" y="14" name="employee_role">
+<row name="id" null="0" autoincrement="1">
+<datatype>smallint</datatype>
+</row>
+<row name="label" null="0" autoincrement="0">
+<datatype>varchar(255)</datatype>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="733" y="138" name="employee">
+<row name="id" null="0" autoincrement="1">
+<datatype>int</datatype>
+</row>
+<row name="user_id" null="0" autoincrement="0">
+<datatype>bigint</datatype>
+<relation table="user" row="id" />
+</row>
+<row name="company_id" null="0" autoincrement="0">
+<datatype>int</datatype>
+<relation table="company" row="id" />
+</row>
+<row name="employee_role_id" null="0" autoincrement="0">
+<datatype>smallint</datatype>
+<relation table="employee_role" row="id" />
+</row>
+<row name="is_disabled" null="0" autoincrement="0">
+<datatype>tinyint</datatype>
+<default>'f'</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="29" y="194" name="profile">
+<row name="id" null="0" autoincrement="1">
+<datatype>bigint</datatype>
+</row>
+<row name="firstname" null="1" autoincrement="0">
+<datatype>varchar(255)</datatype>
+<default>NULL</default></row>
+<row name="lastname" null="1" autoincrement="0">
+<datatype>varchar(255)</datatype>
+<default>NULL</default></row>
+<row name="email" null="1" autoincrement="0">
+<datatype>varchar(255)</datatype>
+<default>NULL</default></row>
+<row name="phone_number" null="1" autoincrement="0">
+<datatype>varchar(50)</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="662" y="369" name="event">
+<row name="id" null="0" autoincrement="1">
+<datatype>bigint</datatype>
+</row>
+<row name="label" null="0" autoincrement="0">
+<datatype>varchar(500)</datatype>
+</row>
+<row name="desc" null="1" autoincrement="0">
+<datatype>varchar(2054)</datatype>
+<default>NULL</default></row>
+<row name="status_id" null="0" autoincrement="0">
+<datatype>smallint</datatype>
+<relation table="event_status" row="id" />
+</row>
+<row name="capacity" null="0" autoincrement="0">
+<datatype>smallint</datatype>
+<default>1</default></row>
+<row name="created_by_id" null="1" autoincrement="0">
+<datatype>bigint</datatype>
+<default>NULL</default><relation table="user" row="id" />
+</row>
+<row name="location_id" null="0" autoincrement="0">
+<datatype>bigint</datatype>
+<relation table="location" row="id" />
+</row>
+<row name="start_date" null="0" autoincrement="0">
+<datatype>datetime</datatype>
+</row>
+<row name="end_date" null="1" autoincrement="0">
+<datatype>datetime</datatype>
+<default>NULL</default></row>
+<row name="category_id" null="0" autoincrement="0">
+<datatype>int</datatype>
+<relation table="event_category" row="id" />
+</row>
+<row name="type_id" null="0" autoincrement="0">
+<datatype>smallint</datatype>
+<relation table="event_type" row="id" />
+</row>
+<row name="channel_id" null="0" autoincrement="0">
+<datatype>bigint</datatype>
+<relation table="channel" row="id" />
+</row>
+<row name="is_disabled" null="0" autoincrement="0">
+<datatype>tinyint</datatype>
+<default>'f'</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="854" y="715" name="event_category">
+<row name="id" null="0" autoincrement="1">
+<datatype>int</datatype>
+</row>
+<row name="label" null="0" autoincrement="0">
+<datatype>varchar(250)</datatype>
+</row>
+<row name="slug" null="0" autoincrement="0">
+<datatype>varchar</datatype>
+<default>'255'</default></row>
+<row name="is_disabled" null="0" autoincrement="0">
+<datatype>tinyint</datatype>
+<default>'f'</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="352" y="550" name="event_type">
+<row name="id" null="0" autoincrement="1">
+<datatype>smallint</datatype>
+</row>
+<row name="label" null="0" autoincrement="0">
+<datatype>varchar(250)</datatype>
+</row>
+<row name="is_disabled" null="0" autoincrement="0">
+<datatype>tinyint</datatype>
+<default>'f'</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="364" y="422" name="member">
+<row name="id" null="1" autoincrement="1">
+<datatype>tinyint</datatype>
+<default>NULL</default></row>
+<row name="event_id" null="0" autoincrement="0">
+<datatype>bigint</datatype>
+<relation table="event" row="id" />
+</row>
+<row name="user_id" null="0" autoincrement="0">
+<datatype>bigint</datatype>
+<relation table="user" row="id" />
+</row>
+<row name="is_disabled" null="0" autoincrement="0">
+<datatype>tinyint</datatype>
+<default>'f'</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="348" y="650" name="event_status">
+<row name="id" null="0" autoincrement="1">
+<datatype>smallint</datatype>
+</row>
+<row name="label" null="0" autoincrement="0">
+<datatype>varchar(255)</datatype>
+</row>
+<row name="is_disabled" null="0" autoincrement="0">
+<datatype>tinyint</datatype>
+<default>'f'</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="40" y="456" name="location">
+<row name="id" null="0" autoincrement="1">
+<datatype>bigint</datatype>
+</row>
+<row name="google_id" null="0" autoincrement="0">
+<datatype>varchar</datatype>
+</row>
+<row name="label" null="1" autoincrement="0">
+<datatype>varchar(500)</datatype>
+<default>NULL</default></row>
+<row name="lat" null="0" autoincrement="0">
+<datatype>float</datatype>
+</row>
+<row name="lng" null="0" autoincrement="0">
+<datatype>float</datatype>
+</row>
+<row name="created_by_id" null="0" autoincrement="0">
+<datatype>bigint</datatype>
+<relation table="user" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="958" y="385" name="channel">
+<row name="id" null="0" autoincrement="1">
+<datatype>bigint</datatype>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="1195" y="427" name="message">
+<row name="id" null="0" autoincrement="1">
+<datatype>bigint</datatype>
+</row>
+<row name="channel_id" null="1" autoincrement="0">
+<datatype>bigint</datatype>
+<default>NULL</default><relation table="channel" row="id" />
+</row>
+<row name="user_id" null="1" autoincrement="0">
+<datatype>bigint</datatype>
+<default>NULL</default><relation table="user" row="id" />
+</row>
+<row name="content" null="1" autoincrement="0">
+<datatype>text</datatype>
+<default>NULL</default></row>
+<row name="created_at" null="0" autoincrement="0">
+<datatype>datetime</datatype>
+</row>
+<row name="is_disabled" null="0" autoincrement="0">
+<datatype>tinyint</datatype>
+<default>'f'</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="1321" y="184" name="notification">
+<row name="id" null="0" autoincrement="1">
+<datatype>bigint</datatype>
+</row>
+<row name="channel_id" null="0" autoincrement="0">
+<datatype>bigint</datatype>
+<relation table="channel" row="id" />
+</row>
+<row name="type" null="0" autoincrement="0">
+<datatype>varchar(255)</datatype>
+<default>'general'</default></row>
+<row name="key" null="0" autoincrement="0">
+<datatype>varchar(500)</datatype>
+</row>
+<row name="data" null="1" autoincrement="0">
+<datatype>text</datatype>
+<default>NULL</default></row>
+<row name="created_at" null="0" autoincrement="0">
+<datatype>datetime</datatype>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+</sql>

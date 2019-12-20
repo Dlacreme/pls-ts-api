@@ -1,0 +1,17 @@
+{
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "pls",
+  "database": "pls_dev",
+  "password": "pls_rules",
+  "synchronize": true,
+  "entities": ["src/models/*.ts"],
+  "migrations": ["dist/migrations/*.js"],
+  "subscribers": ["dist/subscribers/**/*.js"],
+  "cli": {
+    "entitiesDir": "src/models",
+    "migrationsDir": "src/migrations",
+    "subscribersDir": "src/subscribers"
+ }
+}

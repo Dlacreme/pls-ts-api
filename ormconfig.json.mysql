@@ -1,0 +1,17 @@
+{
+  "type": "mysql",
+  "host": "localhost",
+  "port": 3306,
+  "username": "dlc",
+  "database": "pls_dev",
+  "password": "toto",
+  "synchronize": true,
+  "entities": ["dist/models/*.js"],
+  "migrations": ["dist/migrations/*.js"],
+  "subscribers": ["dist/subscribers/**/*.js"],
+  "cli": {
+    "entitiesDir": "src/models",
+    "migrationsDir": "src/migrations",
+    "subscribersDir": "src/subscribers"
+ }
+}

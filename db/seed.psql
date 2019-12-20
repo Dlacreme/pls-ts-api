@@ -1,0 +1,53 @@
+-- Roles
+INSERT INTO role (label) VALUES ('Admin');
+INSERT INTO role (label) VALUES ('Client');
+INSERT INTO role (label) VALUES ('Staff');
+INSERT INTO role (label) VALUES ('User');
+
+INSERT INTO employee_role (label) VALUES ('Manager');
+INSERT INTO employee_role (label) VALUES ('Staff');
+
+-- User
+INSERT INTO public.profile (firstname, lastname, email, phone_number) VALUES('Mathieu', 'Delacroix', 'mathieu@pls.com', '+33643085503');
+INSERT INTO public.user (role_id, email, password, created_at, profile_id) VALUES (1, 'mathieu@pls.com', '92dcd49d91c0ddf1c77443039371aad3', NOW(), 1);
+INSERT INTO company (label, created_by_id, created_at, is_disabled) VALUES ('DLACREME', 1, NOW(), 'f');
+INSERT INTO employee (user_id, company_id, employee_role_id, is_disabled) VALUES (1, 1, 1, 'f');
+
+-- Event
+INSERT INTO event_status (label) VALUES ('Active');
+INSERT INTO event_status (label) VALUES ('Hidden');
+
+INSERT INTO event_type (label) VALUES ('Default');
+
+-- Sports
+INSERT INTO event_category (label, slug) VALUES ('Others', 'other');
+INSERT INTO event_category (label, slug) VALUES ('Americal Football', 'american_footbal');
+INSERT INTO event_category (label, slug) VALUES ('Archery', 'archery');
+INSERT INTO event_category (label, slug) VALUES ('Badminton', 'badminton');
+INSERT INTO event_category (label, slug) VALUES ('Baseball', 'baseball');
+INSERT INTO event_category (label, slug) VALUES ('Basketball', 'basketball');
+INSERT INTO event_category (label, slug) VALUES ('Bicycle', 'bike');
+INSERT INTO event_category (label, slug) VALUES ('Billard', 'billard');
+INSERT INTO event_category (label, slug) VALUES ('Bowling', 'bowling');
+INSERT INTO event_category (label, slug) VALUES ('Martial Art', 'martial_art');
+INSERT INTO event_category (label, slug) VALUES ('Car', 'car');
+INSERT INTO event_category (label, slug) VALUES ('Chess', 'chess');
+INSERT INTO event_category (label, slug) VALUES ('Cricket', 'cricket');
+INSERT INTO event_category (label, slug) VALUES ('Dart', 'dart');
+INSERT INTO event_category (label, slug) VALUES ('Football', 'football');
+INSERT INTO event_category (label, slug) VALUES ('Golf', 'golf');
+INSERT INTO event_category (label, slug) VALUES ('Gym', 'gym');
+INSERT INTO event_category (label, slug) VALUES ('Handball', 'handball');
+INSERT INTO event_category (label, slug) VALUES ('Ice Hockey', 'ice_hockey');
+INSERT INTO event_category (label, slug) VALUES ('Ice Skating', 'ice_skating');
+INSERT INTO event_category (label, slug) VALUES ('Moto', 'moto');
+INSERT INTO event_category (label, slug) VALUES ('Parachute', 'parachute');
+INSERT INTO event_category (label, slug) VALUES ('Running', 'running');
+INSERT INTO event_category (label, slug) VALUES ('Scuba Diving', 'scuba_diving');
+INSERT INTO event_category (label, slug) VALUES ('Skateboard', 'skateboard');
+INSERT INTO event_category (label, slug) VALUES ('Skying', 'ski');
+INSERT INTO event_category (label, slug) VALUES ('Surfing', 'surf');
+INSERT INTO event_category (label, slug) VALUES ('Swimming', 'swimming');
+INSERT INTO event_category (label, slug) VALUES ('Table Tennis', 'table_tennis');
+INSERT INTO event_category (label, slug) VALUES ('Tennis', 'tennis');
+INSERT INTO event_category (label, slug) VALUES ('Volleyball', 'volleyball');

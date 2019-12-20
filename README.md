@@ -1,31 +1,47 @@
-# PLS API
+# PLS Backend
 
-## Init DB
+## Requirements
 
-```sh
-sudo -u postgres psql
-postgres# CREATE USER pls WITH ENCRYPTED PASSWORD 'pls_rules';
-postgres# ALTER USER pls CREATEDB;
-postgres# ALTER USER pls SUPERUSER;
-postgres# CREATE EXTENSION "uuid-ossp";
-postgres# CREATE DATABASE pls_development;
+* NodeJS
+* ts-node
 
-psql pls_development < db/seeds_location.pgsql
-psql pls_development < db/seeds_category.pgsql
-psql pls_development < db/seeds_const.pgsql
+## Commands
+
+* npm i           > *Install dependancies*
+* npm run dev     > *Run server on development*
+* npm run lint    > *Run linter*
+* npm run test    > *Run unit tests and linter*
+* npm run prod    > *Run in production mode*
+
+## Notes
+
+Please make sure your text editor is running our linter.
+
+## DB
+
+` sudo -u postgres psql`
+
+```psql
+  CREATE DATABASE pls_dev;
+  CREATE USER pls WITH ENCRYPTED PASSWORD 'pls_rules';
+  GRANT ALL PRIVILEGES ON DATABASE pls_dev TO pls;
+  psql pls_dev pls < ./db/import.psql
+  psql pls_dev pls < ./db/seed.psql
 ```
 
-## Environment variables
+```
+  $ npm run build
+  $ npm i typeorm -g
+  $ typeorm migration:run
+```
 
-|Name|Type|Default value|Description|
-|--|--|--|--|
-|PORT|string|3001|Port on which the express will listen|
+### Generates model
 
+Export from ondras.
 
-## Database
+`datetime` -> `timestamp`
+`tinyint` -> `bool`
 
-You can use `/resources/db_schema.xml` on `https://ondras.zarovi.cz/sql/demo/` to see the schema of our database.
-
-Glossary:
- - `timestamps`: `created_at` + `updated_at`
- - `timestamps_crud`: `created_at` + `updated_at` + `disabled_at`
+```
+./node_modules/.bin/ts-node ./bin/sync-db-models.ts
+```

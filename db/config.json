@@ -1,7 +1,0 @@
-{
-  "user": "pls",
-  "password": "pls_rules",
-  "host": "localhost",
-  "port": 5432,
-  "database": "pls_development"
-}

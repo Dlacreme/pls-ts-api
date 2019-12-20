@@ -1,6 +1,11 @@
-import 'reflect-metadata';
-import App from './app';
-import { Container } from 'aurelia-dependency-injection';
+import app from './app';
+import * as dotenv from 'dotenv';
 
-const app = new Container().get(App);
-app.run();
+dotenv.config();
+const envPath = process.env.NODE_ENV === 'production' ?
+  './environments/prod.env' : './environments/dev.env';
+dotenv.config({path: envPath});
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => console.log(`PLS running on ${PORT}`));

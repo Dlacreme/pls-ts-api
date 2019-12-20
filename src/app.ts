@@ -1,31 +1,30 @@
-require('express-async-errors');
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
-import * as expressWinston from 'express-winston';
-import { inject } from 'aurelia-dependency-injection';
-import { Config } from './config';
-import { Logger } from './middlewares/logger';
+import * as dotenv from 'dotenv';
+import {createConnection, Connection} from 'typeorm';
+import { Router } from './core/router';
 
-@inject(
-  Logger
-)
 class App {
-  public app: express.Application;
 
-  constructor(
-    private logger: Logger
-  ) {
-    this.logger.log('info', `PLS API booting in ${Config.ENVIRONMENT} mode`);
+  public app:express.Application;
+  public router:Router = new Router();
+
+  constructor() {
+    this.loadEnv();
     this.app = express();
     this.config();
+    this.initDb();
+    this.router.routing(this.app);
   }
 
-  public run(): void {
-    this.app.listen(Config.PORT)
-    this.logger.log('info', `PLS API listening on localhost:${Config.PORT}`);
+  private loadEnv():void {
+    dotenv.config();
+    const envPath = process.env.NODE_ENV === 'production' ?
+      './environments/prod.env' : './environments/dev.env';
+    dotenv.config({path: envPath});
   }
 
-  private config(): void {
+  private config():void {
     this.app.use(bodyParser.json());
     this.app.use(bodyParser.urlencoded({ extended: true }));
     this.app.use((rq, rs, next) => {
@@ -35,14 +34,31 @@ class App {
       rs.setHeader('Access-Control-Allow-Credentials', 'true');
       next();
     });
-    this.app.use(expressWinston.logger({
-      winstonInstance: this.logger.get(),
-      msg: 'HTTP {{req.method}} {{req.url}}',
-      colorize: true,
-      meta: Config.ENVIRONMENT !== 'development'
-    }));
+  }
+
+  private initDb():void {
+    createConnection({
+      type: 'postgres',
+      host: process.env.NODE_ENV === 'production' ? 'ec2-54-247-113-90.eu-west-1.compute.amazonaws.com' : 'localhost',
+      port: process.env.NODE_ENV === 'production' ? 5432 : 5432,
+      username: process.env.NODE_ENV === 'production' ? 'nvmnesuibcquhv' : 'pls',
+      password: process.env.NODE_ENV === 'production' ? '70a2018a6a8d15e4cb934a55f650813385e7061640e126a62cf1d1829b398bc6' : 'pls_rules',
+      database: process.env.NODE_ENV === 'production' ? 'd6b3tt150rovn3' : 'pls_dev',
+      logging: process.env.NODE_ENV !== 'production',
+      ssl: process.env.NODE_ENV === 'production',
+      entities: [
+        process.env.NODE_ENV === 'production' ? 'src/models/*.ts' : 'src/models/*.ts'
+      ],
+      synchronize: false,
+    })
+      .then((connection:Connection) => {
+      }, (err) => {
+        console.log('Connection failed > ', err);
+        throw new Error('Cannot connect to Database');
+      }
+    );
   }
 
 }
 
-export default App;
+export default new App().app;
