@@ -42,7 +42,7 @@ class App {
       host: process.env.NODE_ENV === 'production' ? 'ec2-54-247-113-90.eu-west-1.compute.amazonaws.com' : 'localhost',
       port: process.env.NODE_ENV === 'production' ? 5432 : 5432,
       username: process.env.NODE_ENV === 'production' ? 'nvmnesuibcquhv' : 'pls',
-      password: process.env.NODE_ENV === 'production' ? '70a2018a6a8d15e4cb934a55f650813385e7061640e126a62cf1d1829b398bc6' : 'pls_rules',
+      password: process.env.NODE_ENV === 'production' ? '' : 'pls_rules',
       database: process.env.NODE_ENV === 'production' ? 'd6b3tt150rovn3' : 'pls_dev',
       logging: process.env.NODE_ENV !== 'production',
       ssl: process.env.NODE_ENV === 'production',
